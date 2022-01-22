@@ -1,6 +1,6 @@
 Documentation
 -------------
-https://github.com/xinghuang077/ET2_test/blob/main/I2C_Config_test/IMGs/usb-iss%20module.png
+![USB-ISS module](https://github.com/xinghuang077/ET2_test/blob/main/I2C_Config_test/IMGs/usb-iss%20module.png)
 
 **USB-ISS hardware module:**
   https://www.robot-electronics.co.uk/htm/usb_iss_tech.htm
