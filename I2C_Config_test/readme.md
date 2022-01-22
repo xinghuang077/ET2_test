@@ -9,8 +9,7 @@ USB-ISS module
 
 Installing
 ----------
-.. code-block:: bash
-
+```
     pip install usb-iss
 
-----
+```
