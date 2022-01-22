@@ -20,7 +20,9 @@ Usage Example
     iss.setup_i2c()
 
     # Write and read back some data
-    # NOTE: I2C methods use 7-bit **device addresses** (0x00 - 0x7F)
+    # NOTE: I2C methods use 7-bit device addresses (0x00 - 0x7F)
+    # The example shows the register addresses is 8 bits from 0x00 to 0xFF, the USB-ISS module also support the 16-bit register addresses (0x0000 0xFFFF).
+    # iss.i2c.write_ad2 for 16-bit register address writing, iss.i2c.read_ad2 for 16-bit register address reading.
     
 
     iss.i2c.write(0x62, 0, [0, 1, 2]);
