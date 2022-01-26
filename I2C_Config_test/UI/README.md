@@ -3,4 +3,5 @@ PyQt5 is a comprehensive set of Python bindings for Qt v5. PyQt5 is the latest v
 https://www.tutorialspoint.com/pyqt5/index.htm
 
 PyQt5 is selectd to implement UIs for different ET2_test test purposes.
-
+This is an example for ET2_test I2C test. The simple thing is read or write one byte at one time.
+[https://github.com/xinghuang077/ET2_test/blob/main/I2C_Config_test/IMGs/OneByteReadWriteUI.png]
