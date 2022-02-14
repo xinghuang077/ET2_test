@@ -45,7 +45,7 @@ def main():
         Reg_Addr_new = ((Reg_Addr & 0xFF) << 8) | ((Reg_Addr >> 8) & 0xFF)
         # print(hex(Reg_Addr_new[i]))
 
-        iss.i2c.write_ad2(I2C_Addr, Reg_Addr_new, [Reg_Val])
+        #iss.i2c.write_ad2(I2C_Addr, Reg_Addr_new, [Reg_Val])
 
         read_data = iss.i2c.read_ad2(I2C_Addr, Reg_Addr_new, 1)
 
