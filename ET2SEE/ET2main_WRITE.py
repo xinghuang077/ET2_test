@@ -76,7 +76,7 @@ def main():
         for i in list(range(0, 8)) + list(range(120, 128)) + list(range(128, 136)) + list(range(248, 256)) + list(range(512, 520)):
             if readVal[i] != writeVal[i]:
                 print("%d %x %x %x" %(i, Reg_Addr[i], writeVal[i], readVal[i]))
-
+ 
 #-----------------------------------------------------------------------------------#
 if __name__ == '__main__':
     main()
