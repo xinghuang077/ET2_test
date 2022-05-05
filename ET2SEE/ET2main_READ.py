@@ -26,13 +26,13 @@ def main():
     
     # value = input("Please enter the number of the ET2_test board you are testing:\n")
 
-    # All of the register addresses, and default values 
+    ## All of the register addresses, and default values 
     Reg_Addr = []
     Reg_Val_Default = []
     Reg_Val_Write = []
     Reg_Val_Broadcast = []      
 
-    # Read configuraton file, I2C address, 16-bit register addresses, 8-bit register values
+    ## Read configuraton file, I2C address, 16-bit register addresses, 8-bit register values
     with open(user_config_filename, 'r') as infile:                  # read configuration file
         for line in infile.readlines():
             if len(line.split()) == 1:
@@ -45,20 +45,24 @@ def main():
                 Reg_Val_Broadcast += [int(line.split()[3], 16)]
     print('There are', len(Reg_Addr), 'registers in ET2_test chip.')
 
-    # set usb-iss iic master device
+    ## Power Supply USB devices
+    VISA_ADDRESS = ET2_test_functions.find('USB?*INSTR')
+
+    ## set usb-iss iic master device
     iss = UsbIss()
     iss.open(COM_Port)
     iss.setup_i2c(clock_khz=100)
 
-    # Check whether a device responds at the specified I2C address.
+    ## Check whether a device responds at the specified I2C address.
     if(not iss.i2c.test(I2C_Addr)):
         print("Unsuccessful communication with the target via I2C!")
         return
     print("Successful communication with the target via I2C!")
 
-    #Swap all register addresses in ET2_test chip.
+    ## Swap all register addresses in ET2_test chip.
     Reg_Addr_new = ET2_test_functions.regAddrSwap(Reg_Addr)
-    # print("reg addr swapped")  
+    # print("reg addr swapped") 
+     
 
     while True:
        ###################################################################################################### 
@@ -118,7 +122,7 @@ def main():
                                 regReadVal[24] ^ 0xff, regReadVal[25] ^ 0xff, regReadVal[26] ^ 0xff, regReadVal[27] ^ 0xff, \
                                 regReadVal[28] ^ 0xff, regReadVal[29] ^ 0xff, regReadVal[30] ^ 0xff, regReadVal[31] ^ 0xff]
         # print(statusVarExpectedVal, "\n", statusVarReadVal) 
-     
+    
 
        ######################################################################################################
        ## Stasus Read
@@ -202,7 +206,8 @@ def main():
        ## Power Supply Source Current Read
        ######################################################################################################
         ## Change this variable to the address of your instrument
-        VISA_ADDRESS = 'USB0::0x2A8D::0x1102::MY58041593::INSTR'
+        # VISA_ADDRESS = 'USB0::0x2A8D::0x1102::MY58041593::INSTR'
+                # print(VISA_ADDRESS)
         try:
             ## Create a connection (session) to the instrument
             resourceManager = visa.ResourceManager()
@@ -248,11 +253,11 @@ def main():
             # end if statusExpectedVal == statusReadVal
                 
             if efuseExpectedVal == efuseReadVal :
-                print("E-Fuse values of B1 Expected == Read: %s\n" % ('[{}]'.format(', '.join(hex(x) for x in efuseReadVal))))
-                infile_iic.write("E-Fuse values of B1 Expected == Read: %s\n" % ('[{}]'.format(', '.join(hex(x) for x in efuseReadVal))))
+                print("E-Fuse values of B1/9 Expected == Read: %s\n" % ('[{}]'.format(', '.join(hex(x) for x in efuseReadVal))))
+                infile_iic.write("E-Fuse values of B1/9 Expected == Read: %s\n" % ('[{}]'.format(', '.join(hex(x) for x in efuseReadVal))))
             else:
-                print("E-Fuse values of B1 Expected != Read: %s\n" % ('[{}]'.format(', '.join(hex(x) for x in efuseReadVal))))
-                infile_iic.write("E-Fuse values of B1  Expected != Read: %s\n" % ('[{}]'.format(', '.join(hex(x) for x in efuseReadVal))))
+                print("E-Fuse values of B1/9 Expected != Read: %s\n" % ('[{}]'.format(', '.join(hex(x) for x in efuseReadVal))))
+                infile_iic.write("E-Fuse values of B1/9 Expected != Read: %s\n" % ('[{}]'.format(', '.join(hex(x) for x in efuseReadVal))))
             # end if efuseExpectedVal == efuseReadVal
             infile_iic.flush()
         # end with
