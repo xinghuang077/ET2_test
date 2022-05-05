@@ -118,7 +118,7 @@ def main():
                                 regReadVal[24] ^ 0xff, regReadVal[25] ^ 0xff, regReadVal[26] ^ 0xff, regReadVal[27] ^ 0xff, \
                                 regReadVal[28] ^ 0xff, regReadVal[29] ^ 0xff, regReadVal[30] ^ 0xff, regReadVal[31] ^ 0xff]
         # print(statusVarExpectedVal, "\n", statusVarReadVal) 
-    
+     
 
        ######################################################################################################
        ## Stasus Read
