@@ -82,5 +82,5 @@ def valueCompare(RegAddr, RegVal, readBackValue):
         # for i in range(len(RegAddr)):
         #     if RegVal[i] != readBackValue[i]:
         #         print(i, hex(RegAddr[i]), hex(RegVal[i]), hex(readBackValue[i]))
-
+ 
     return MatchOrNot
