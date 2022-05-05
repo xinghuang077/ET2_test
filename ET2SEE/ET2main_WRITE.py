@@ -41,6 +41,10 @@ def main():
                 Reg_Val_Write += [int(line.split()[2], 16)]
                 Reg_Val_Broadcast += [int(line.split()[3], 16)]
     print('There are', len(Reg_Addr), 'registers in ET2_test chip.')
+    
+    # Power Supply USB devices
+    # VISA_ADDRESS = ET2_test_functions.find('USB?*INSTR')
+    ET2_test_functions.find('USB?*INSTR')
 
     # set usb-iss iic master device
     iss = UsbIss()
@@ -76,7 +80,7 @@ def main():
         for i in list(range(0, 8)) + list(range(120, 128)) + list(range(128, 136)) + list(range(248, 256)) + list(range(512, 520)):
             if readVal[i] != writeVal[i]:
                 print("%d %x %x %x" %(i, Reg_Addr[i], writeVal[i], readVal[i]))
- 
+
 #-----------------------------------------------------------------------------------#
 if __name__ == '__main__':
     main()
