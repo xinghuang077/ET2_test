@@ -1,6 +1,8 @@
 import os
 import sys
 import time
+# import visa
+import pyvisa as visa
 
 
 def regAddrSwap(RegAddr):
@@ -82,5 +84,24 @@ def valueCompare(RegAddr, RegVal, readBackValue):
         # for i in range(len(RegAddr)):
         #     if RegVal[i] != readBackValue[i]:
         #         print(i, hex(RegAddr[i]), hex(RegVal[i]), hex(readBackValue[i]))
- 
+
     return MatchOrNot
+
+
+
+
+def find(searchString):
+
+    resourceManager = visa.ResourceManager()
+
+    # print('Find with search string \'%s\':' % searchString)
+    devices = resourceManager.list_resources(searchString)
+    if len(devices) > 0:
+        for device in devices:
+            # print('\t%s' % device)
+            print('device found! \t%s' % device)
+    else:
+        print('... didn\'t find anything of device!')
+
+    resourceManager.close()
+    return device
